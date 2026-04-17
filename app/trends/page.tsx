@@ -3,104 +3,133 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
-import TrendCard from '@/components/TrendCard';
 import { trendingAudio } from '@/lib/trends';
 import { motion } from 'framer-motion';
-import { Music, Filter, TrendingUp, Clock, Search } from 'lucide-react';
+import { Music, TrendingUp, Clock, ArrowUpRight, ArrowDownRight, Minus } from 'lucide-react';
 
 export default function TrendsPage() {
-  const categories = ['All', 'Country Pop', 'Electronic', 'Nostalgia', 'Seasonal', 'Original Audio', 'Comedy', 'Retro'];
-  const trendsByTrend = {
-    rising: trendingAudio.filter(t => t.trend === 'rising'),
-    peak: trendingAudio.filter(t => t.trend === 'peak'),
-    declining: trendingAudio.filter(t => t.trend === 'declining')
-  };
+  const rising = trendingAudio.filter(t => t.trend === 'rising');
+  const peak = trendingAudio.filter(t => t.trend === 'peak');
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <AnimatedBackground />
 
-      <main className="flex-1 pt-24 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
+      <main className="flex-1 pt-24 pb-16 px-6">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
+            className="mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
-              <Music className="w-4 h-4 text-primary" />
-              <span className="text-sm text-text-secondary">Weekly Updated</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
+                <Music className="w-5 h-5 text-white" />
+              </div>
+              <h1 className="text-4xl font-bold">Trending Audio</h1>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Trending <span className="text-gradient">Audio</span>
-            </h1>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              Discover the hottest sounds on Instagram Reels. Updated weekly with post counts and trend lifecycle indicators.
+            <p className="text-text-secondary text-lg">
+              The sounds dominating Reels this week. Use these for maximum reach.
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="glass rounded-2xl p-6 mb-12"
-          >
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-              <div>
-                <h3 className="font-semibold mb-1">Trend Lifecycle Guide</h3>
-                <p className="text-sm text-text-secondary">Understanding when to jump on trends</p>
+          <div className="grid grid-cols-3 gap-4 mb-12">
+            {[
+              { label: 'Rising', count: rising.length, color: 'accent' },
+              { label: 'At Peak', count: peak.length, color: 'secondary' },
+              { label: 'Total', count: trendingAudio.length, color: 'primary' }
+            ].map((stat, i) => (
+              <div key={i} className="glass rounded-xl p-4 text-center">
+                <p className="text-2xl font-bold font-mono text-gradient">{stat.count}</p>
+                <p className="text-sm text-text-secondary">{stat.label}</p>
               </div>
-              <div className="flex flex-wrap gap-4">
-                {[
-                  { label: 'Rising', color: 'accent', desc: 'Early adoption - High risk, high reward' },
-                  { label: 'Peak', color: 'secondary', desc: 'Maximum reach potential' },
-                  { label: 'Declining', color: 'text-secondary', desc: 'Saturated - Still works for niche' }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <span className={`w-3 h-3 rounded-full bg-${item.color}`} />
+            ))}
+          </div>
+
+          <div className="mb-12">
+            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <ArrowUpRight className="w-5 h-5 text-accent" />
+              Rising Fast
+            </h2>
+            <div className="space-y-3">
+              {rising.map((audio, i) => (
+                <motion.div
+                  key={audio.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="glass rounded-xl p-5 flex items-center justify-between hover:border-primary/30 transition-all"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
+                      <Music className="w-5 h-5 text-white" />
+                    </div>
                     <div>
-                      <span className="text-sm font-medium">{item.label}</span>
-                      <span className="text-xs text-text-secondary ml-2 hidden sm:inline">{item.desc}</span>
+                      <h3 className="font-semibold">{audio.title}</h3>
+                      <p className="text-sm text-text-secondary">{audio.artist}</p>
                     </div>
                   </div>
-                ))}
-              </div>
+                  <div className="flex items-center gap-6">
+                    <div className="text-right">
+                      <p className="font-mono font-bold text-gradient">{audio.posts}</p>
+                      <p className="text-xs text-text-secondary">posts</p>
+                    </div>
+                    <span className="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">
+                      {audio.category}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </motion.div>
+          </div>
 
-          {[
-            { title: 'Rising Stars', subtitle: 'These sounds are gaining momentum. Get in early for maximum reach.', audio: trendsByTrend.rising, color: 'accent' },
-            { title: 'At The Peak', subtitle: 'Maximum viral potential. These sounds are dominating right now.', audio: trendsByTrend.peak, color: 'secondary' },
-            { title: 'Cooling Down', subtitle: 'Still useful for niche audiences but reach is declining.', audio: trendsByTrend.declining, color: 'text-secondary' }
-          ].map((section, sectionIndex) => (
-            <div key={section.title} className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <div className={`w-1 h-8 rounded-full bg-${section.color}`} />
-                <div>
-                  <h2 className="text-2xl font-bold">{section.title}</h2>
-                  <p className="text-sm text-text-secondary">{section.subtitle}</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {section.audio.map((audio, i) => (
-                  <TrendCard key={audio.id} audio={audio} index={sectionIndex * 3 + i} />
-                ))}
-              </div>
+          <div>
+            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-secondary" />
+              At The Peak
+            </h2>
+            <div className="space-y-3">
+              {peak.map((audio, i) => (
+                <motion.div
+                  key={audio.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="glass rounded-xl p-5 flex items-center justify-between hover:border-primary/30 transition-all"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-secondary flex items-center justify-center">
+                      <Music className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{audio.title}</h3>
+                      <p className="text-sm text-text-secondary">{audio.artist}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-6">
+                    <div className="text-right">
+                      <p className="font-mono font-bold text-gradient">{audio.posts}</p>
+                      <p className="text-xs text-text-secondary">posts</p>
+                    </div>
+                    <span className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-xs font-medium">
+                      {audio.category}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          ))}
+          </div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="mt-12 glass rounded-2xl p-8 text-center"
+            className="mt-12 glass rounded-xl p-6"
           >
-            <h3 className="text-xl font-bold mb-4">Pro Tip: Timing is Everything</h3>
-            <p className="text-text-secondary max-w-2xl mx-auto">
-              The algorithm heavily favors Reels that use trending audio while it&apos;s still rising, not after it peaks.
-              Aim to use new sounds within 48 hours of noticing them gain traction for the best results.
+            <h3 className="font-semibold mb-2">Pro Tip</h3>
+            <p className="text-text-secondary text-sm">
+              Use trending audio within 48 hours of it starting to rise. This is when the algorithm gives maximum distribution boost.
             </p>
           </motion.div>
         </div>

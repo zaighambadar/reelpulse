@@ -3,10 +3,9 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
-import FormatCard from '@/components/FormatCard';
 import { contentFormats } from '@/lib/trends';
 import { motion } from 'framer-motion';
-import { Lightbulb, Target, TrendingUp } from 'lucide-react';
+import { Lightbulb, TrendingUp, Target, Check } from 'lucide-react';
 
 export default function FormatsPage() {
   const highEngagement = contentFormats.filter(f => f.engagement === 'high');
@@ -17,107 +16,110 @@ export default function FormatsPage() {
       <Navbar />
       <AnimatedBackground />
 
-      <main className="flex-1 pt-24 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
+      <main className="flex-1 pt-24 pb-16 px-6">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
+            className="mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
-              <Lightbulb className="w-4 h-4 text-secondary" />
-              <span className="text-sm text-text-secondary">Proven Formats</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
+                <Lightbulb className="w-5 h-5 text-white" />
+              </div>
+              <h1 className="text-4xl font-bold">Content Formats</h1>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Viral <span className="text-gradient">Content Formats</span>
-            </h1>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              These formats consistently outperform on the 2026 algorithm.
-              Each one is optimized for specific engagement signals.
+            <p className="text-text-secondary text-lg">
+              Proven formats that consistently go viral. Pick one and create.
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12"
-          >
-            {[
-              { icon: TrendingUp, label: 'High Engagement', value: highEngagement.length, color: 'secondary' },
-              { icon: Target, label: 'Medium Engagement', value: mediumEngagement.length, color: 'accent' },
-              { icon: Lightbulb, label: 'Total Formats', value: contentFormats.length, color: 'primary' }
-            ].map((stat, i) => (
-              <div key={i} className="glass rounded-xl p-6 text-center">
-                <stat.icon className={`w-8 h-8 text-${stat.color} mx-auto mb-3`} />
-                <p className="text-3xl font-bold font-mono text-gradient">{stat.value}</p>
-                <p className="text-sm text-text-secondary mt-1">{stat.label}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-1 h-8 rounded-full bg-secondary" />
-              <div>
-                <h2 className="text-2xl font-bold">High Engagement Formats</h2>
-                <p className="text-sm text-text-secondary">These formats consistently drive shares, saves, and watch time</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="mb-8">
+            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-secondary" />
+              High Engagement
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {highEngagement.map((format, i) => (
-                <FormatCard key={format.id} format={format} index={i} />
+                <motion.div
+                  key={format.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="glass rounded-xl p-6 hover:border-primary/30 transition-all"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1">{format.name}</h3>
+                      <p className="text-sm text-text-secondary flex items-center gap-1">
+                        <Target className="w-3 h-3" />
+                        Best for: {format.bestFor}
+                      </p>
+                    </div>
+                    <span className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-xs font-medium">
+                      High Engagement
+                    </span>
+                  </div>
+
+                  <p className="text-text-secondary text-sm mb-4">{format.description}</p>
+
+                  <div className="mb-4">
+                    <h4 className="text-xs font-semibold text-text-secondary mb-2 uppercase tracking-wide">Tips</h4>
+                    <ul className="space-y-1">
+                      {format.tips.map((tip, j) => (
+                        <li key={j} className="text-sm text-text-secondary flex items-start gap-2">
+                          <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                          {tip}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/5">
+                    <p className="text-xs text-text-secondary">
+                      <span className="text-primary font-medium">Example:</span> {format.example}
+                    </p>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
           {mediumEngagement.length > 0 && (
             <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-1 h-8 rounded-full bg-accent" />
-                <div>
-                  <h2 className="text-2xl font-bold">Medium Engagement Formats</h2>
-                  <p className="text-sm text-text-secondary">Still effective, especially for specific niches</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-accent" />
+                Medium Engagement
+              </h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {mediumEngagement.map((format, i) => (
-                  <FormatCard key={format.id} format={format} index={i + highEngagement.length} />
+                  <motion.div
+                    key={format.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className="glass rounded-xl p-6 hover:border-primary/30 transition-all"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-lg font-semibold mb-1">{format.name}</h3>
+                        <p className="text-sm text-text-secondary">Best for: {format.bestFor}</p>
+                      </div>
+                      <span className="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">
+                        Medium
+                      </span>
+                    </div>
+                    <p className="text-text-secondary text-sm mb-4">{format.description}</p>
+                    <div className="pt-4 border-t border-white/5">
+                      <p className="text-xs text-text-secondary">
+                        <span className="text-primary font-medium">Example:</span> {format.example}
+                      </p>
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
           )}
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-16 glass rounded-2xl p-8"
-          >
-            <h3 className="text-xl font-bold mb-6 text-center">Format Selection Guide</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { goal: 'Maximize Shares', formats: ['POV / Types Of', 'Multi-Person Debate', 'Storytime'] },
-                { goal: 'Maximize Saves', formats: ['Educational Listicles', 'Tutorial / How-To', 'Before & After'] },
-                { goal: 'Maximize Watch Time', formats: ['Storytime', 'GRWM', 'Storytelling'] },
-                { goal: 'Maximize Reach', formats: ['Trending Audio', 'POV', 'Transitions'] }
-              ].map((guide, i) => (
-                <div key={i} className="bg-surface-light rounded-xl p-4">
-                  <h4 className="font-semibold text-secondary mb-3">{guide.goal}</h4>
-                  <ul className="space-y-2">
-                    {guide.formats.map((format, j) => (
-                      <li key={j} className="text-sm text-text-secondary flex items-start gap-2">
-                        <span className="text-primary mt-1">•</span>
-                        {format}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </main>
 

@@ -8,6 +8,21 @@ export interface TrendingAudio {
   bestFor: string[];
 }
 
+export interface TrendingVideo {
+  id: number;
+  title: string;
+  creator: string;
+  creatorHandle: string;
+  views: string;
+  likes: string;
+  shares: string;
+  format: string;
+  trend: 'rising' | 'peak';
+  description: string;
+  whyItWorks: string;
+  thumbnail: string;
+}
+
 export interface ContentFormat {
   id: number;
   name: string;
@@ -92,15 +107,6 @@ export const trendingAudio: TrendingAudio[] = [
   },
   {
     id: 8,
-    title: "Money Maker",
-    artist: "Ludacris ft. Pharrell",
-    posts: "78K",
-    trend: 'declining',
-    category: 'Hip Hop',
-    bestFor: ['Flex', 'Business', 'Success content']
-  },
-  {
-    id: 9,
     title: "Ignoring Calls",
     artist: "@ourfiscusfamily",
     posts: "45K",
@@ -109,13 +115,137 @@ export const trendingAudio: TrendingAudio[] = [
     bestFor: ['Comedy sketches', 'Relatable', 'Storytime']
   },
   {
-    id: 10,
+    id: 9,
     title: "Break My Stride",
     artist: "Matthew Wilder",
     posts: "112K",
     trend: 'peak',
     category: 'Retro',
     bestFor: ['Motivation', 'Workout', 'Transitions']
+  },
+  {
+    id: 10,
+    title: "Money Maker",
+    artist: "Ludacris ft. Pharrell",
+    posts: "78K",
+    trend: 'declining',
+    category: 'Hip Hop',
+    bestFor: ['Flex', 'Business', 'Success content']
+  }
+];
+
+export const trendingVideos: TrendingVideo[] = [
+  {
+    id: 1,
+    title: "POV: When you finally beat procrastination",
+    creator: "Productivity Guru",
+    creatorHandle: "@productivityguru",
+    views: "12.4M",
+    likes: "1.2M",
+    shares: "450K",
+    format: "POV / Types Of",
+    trend: 'peak',
+    description: "A relatable take on overcoming procrastination that resonated with millions",
+    whyItWorks: "Strong hook in first second, relatable scenario, ends with satisfying twist",
+    thumbnail: "pov"
+  },
+  {
+    id: 2,
+    title: "5 habits that changed my life",
+    creator: "Life Coach Sarah",
+    creatorHandle: "@lifecoachsarah",
+    views: "8.7M",
+    likes: "890K",
+    shares: "320K",
+    format: "Educational",
+    trend: 'peak',
+    description: "Bite-sized productivity tips delivered in a visually engaging format",
+    whyItWorks: "Bold claim hook, numbered format drives saves, actionable advice",
+    thumbnail: "educational"
+  },
+  {
+    id: 3,
+    title: "GRWM: Job interview ready in 10 minutes",
+    creator: "Style by Emma",
+    creatorHandle: "@stylebyemma",
+    views: "15.2M",
+    likes: "1.8M",
+    shares: "620K",
+    format: "GRWM",
+    trend: 'peak',
+    description: "Quick get-ready routine before a major life event",
+    whyItWorks: "Relatable context, satisfying transformations, aspirational yet achievable",
+    thumbnail: "grwm"
+  },
+  {
+    id: 4,
+    title: "My room before vs after the 30-day clean sweep",
+    creator: "Home Organization",
+    creatorHandle: "@homeorg",
+    views: "22.1M",
+    likes: "2.4M",
+    shares: "890K",
+    format: "Before & After",
+    trend: 'peak',
+    description: "Satisfying room transformation that kept viewers watching",
+    whyItWorks: "Dramatic contrast, time-lapse progression, emotional payoff",
+    thumbnail: "beforeafter"
+  },
+  {
+    id: 5,
+    title: "The scariest moment of my life (part 1)",
+    creator: "Storytime Mike",
+    creatorHandle: "@storytimemike",
+    views: "6.3M",
+    likes: "720K",
+    shares: "380K",
+    format: "Storytime",
+    trend: 'rising',
+    description: "Hooked viewers with a cliffhanger story that demanded a follow-up",
+    whyItWorks: "Mid-action start, builds suspense, ended on cliffhanger for part 2",
+    thumbnail: "storytime"
+  },
+  {
+    id: 6,
+    title: "Hot takes: iPhone vs Android users",
+    creator: "Tech Takes",
+    creatorHandle: "@techtakes",
+    views: "9.8M",
+    likes: "1.1M",
+    shares: "510K",
+    format: "Multi-Person Debate",
+    trend: 'peak',
+    description: "Two perspectives debating a universally relatable topic",
+    whyItWorks: "Engages both sides of the argument, comment bait ending",
+    thumbnail: "debate"
+  },
+  {
+    id: 7,
+    title: "Stomp reveal: New collection is HERE",
+    creator: "Fashion Nova",
+    creatorHandle: "@fashionnova",
+    views: "18.5M",
+    likes: "2.1M",
+    shares: "780K",
+    format: "Stomp to Reveal",
+    trend: 'peak',
+    description: "Dramatic product reveal using the stomp transition trend",
+    whyItWorks: "Unexpected transition, visual impact, creates intrigue",
+    thumbnail: "stomp"
+  },
+  {
+    id: 8,
+    title: "Trying the viral 'World Stop' trend",
+    creator: "Creator Collective",
+    creatorHandle: "@creatorcollective",
+    views: "4.2M",
+    likes: "580K",
+    shares: "290K",
+    format: "Trending Audio",
+    trend: 'rising',
+    description: "Jumped on the World Stop trend with a unique twist",
+    whyItWorks: "Used trending audio within 48 hours, added unique creative spin",
+    thumbnail: "trending"
   }
 ];
 
@@ -178,7 +308,7 @@ export const contentFormats: ContentFormat[] = [
   },
   {
     id: 5,
-    name: "Storytime / Storytimes",
+    name: "Storytime",
     description: "Narrative-driven content that builds suspense. Keeps viewers hooked to the end.",
     engagement: 'high',
     bestFor: 'Watch Time & Comments',
@@ -192,7 +322,7 @@ export const contentFormats: ContentFormat[] = [
   },
   {
     id: 6,
-    name: "Trending Audio Participation",
+    name: "Trending Audio",
     description: "Using trending sounds with your own twist. Fastest path to algorithmic distribution.",
     engagement: 'high',
     bestFor: 'Reach & Discovery',
@@ -202,7 +332,7 @@ export const contentFormats: ContentFormat[] = [
       'Jump on trends early for maximum reach',
       'Never repost TikToks directly'
     ],
-    example: '"Duet this if you... " or using trending sounds with your niche'
+    example: 'Participate in viral challenges and trends with your unique niche'
   },
   {
     id: 7,
@@ -280,14 +410,14 @@ export const algorithmTips: AlgorithmTip[] = [
   {
     id: 7,
     title: "Create Loops",
-    description: "Reels that naturally loop back to the start get 2.3x more watch time. Structure your ending to flow back to the beginning.",
+    description: "Reels that naturally loop back to the start get 2.3x more watch time.",
     icon: "repeat",
     priority: "nice"
   },
   {
     id: 8,
     title: "Save-Worthy Content",
-    description: "Saves signal high value to the algorithm. Create content people want to bookmark for later.",
+    description: "Saves signal high value to the algorithm. Create content people want to bookmark.",
     icon: "bookmark",
     priority: "nice"
   }

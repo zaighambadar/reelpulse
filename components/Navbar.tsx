@@ -3,11 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Zap, TrendingUp, Lightbulb, BarChart3 } from 'lucide-react';
+import { Menu, X, Zap, Video, Music, Lightbulb, BarChart3 } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Zap },
-  { href: '/trends', label: 'Trending', icon: TrendingUp },
+  { href: '/videos', label: 'Videos', icon: Video },
+  { href: '/trends', label: 'Audio', icon: Music },
   { href: '/formats', label: 'Formats', icon: Lightbulb },
   { href: '/tips', label: 'Tips', icon: BarChart3 },
 ];
@@ -18,7 +19,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
@@ -59,7 +60,7 @@ export default function Navbar() {
 
       {isOpen && (
         <div className="md:hidden glass border-t border-white/5">
-          <div className="px-4 py-4 space-y-2">
+          <div className="px-6 py-4 space-y-1">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
