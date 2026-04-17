@@ -11,69 +11,86 @@ export default function TrendsPage() {
   const peak = trendingAudio.filter(t => t.trend === 'peak');
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: '#0a0a1a' }}>
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-24 px-6 lg:px-12">
-        <div className="max-w-5xl mx-auto">
+      <main className="flex-1 pt-24 pb-24" style={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-20"
           >
-            <div className="inline-flex items-center justify-center gap-4 mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-primary flex items-center justify-center">
-                <Music className="w-7 h-7 text-white" />
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div style={{ width: '3.5rem', height: '3.5rem', borderRadius: '1rem', background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Music style={{ width: '1.75rem', height: '1.75rem', color: 'white' }} />
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold">Trending Audio</h1>
+              <h1 style={{ fontSize: '3rem', fontWeight: 700 }}>Trending Audio</h1>
             </div>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
+            <p style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
               The sounds dominating Reels this week. Use these for maximum reach.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-3 gap-6 mb-16">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '3rem' }}>
             {[
-              { label: 'Rising', count: rising.length, color: 'accent' },
-              { label: 'At Peak', count: peak.length, color: 'secondary' },
-              { label: 'Total', count: trendingAudio.length, color: 'primary' }
+              { label: 'Rising', count: rising.length },
+              { label: 'At Peak', count: peak.length },
+              { label: 'Total', count: trendingAudio.length }
             ].map((stat, i) => (
-              <div key={i} className="glass rounded-2xl p-6 text-center">
-                <p className="text-3xl font-bold font-mono text-gradient">{stat.count}</p>
-                <p className="text-base text-text-secondary mt-2">{stat.label}</p>
+              <div style={{
+                padding: '1.5rem',
+                borderRadius: '1.5rem',
+                background: 'rgba(26, 26, 46, 0.8)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(12px)',
+                textAlign: 'center'
+              }}>
+                <p style={{ fontSize: '2rem', fontWeight: 700, background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontFamily: 'monospace' }}>{stat.count}</p>
+                <p style={{ fontSize: '1rem', color: '#94A3B8', marginTop: '0.5rem' }}>{stat.label}</p>
               </div>
             ))}
           </div>
 
-          <div className="mb-20">
-            <h2 className="text-2xl font-bold mb-8 text-center flex items-center justify-center gap-3">
-              <ArrowUpRight className="w-6 h-6 text-accent" />
+          <div style={{ marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '2rem', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+              <ArrowUpRight style={{ width: '1.5rem', height: '1.5rem', color: '#06B6D4' }} />
               Rising Fast
             </h2>
-            <div className="space-y-4">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {rising.map((audio, i) => (
                 <motion.div
                   key={audio.id}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="glass rounded-2xl p-6 flex items-center justify-between hover:border-primary/30 transition-all"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '1.5rem',
+                    borderRadius: '1.5rem',
+                    background: 'rgba(26, 26, 46, 0.8)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(12px)'
+                  }}
+                  className="audio-card"
                 >
-                  <div className="flex items-center gap-5">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-primary flex items-center justify-center">
-                      <Music className="w-6 h-6 text-white" />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                    <div style={{ width: '3.5rem', height: '3.5rem', borderRadius: '1rem', background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Music style={{ width: '1.5rem', height: '1.5rem', color: 'white' }} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg">{audio.title}</h3>
-                      <p className="text-base text-text-secondary">{audio.artist}</p>
+                      <h3 style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.25rem' }}>{audio.title}</h3>
+                      <p style={{ fontSize: '1rem', color: '#94A3B8' }}>{audio.artist}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-8">
-                    <div className="text-right">
-                      <p className="font-mono font-bold text-xl text-gradient">{audio.posts}</p>
-                      <p className="text-sm text-text-secondary">posts</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+                    <div style={{ textAlign: 'right' }}>
+                      <p style={{ fontFamily: 'monospace', fontWeight: 700, fontSize: '1.25rem', background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{audio.posts}</p>
+                      <p style={{ fontSize: '0.875rem', color: '#94A3B8' }}>posts</p>
                     </div>
-                    <span className="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">
+                    <span style={{ padding: '0.5rem 1rem', background: 'rgba(6, 182, 212, 0.1)', color: '#06B6D4', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: 500 }}>
                       {audio.category}
                     </span>
                   </div>
@@ -83,34 +100,44 @@ export default function TrendsPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold mb-8 text-center flex items-center justify-center gap-3">
-              <TrendingUp className="w-6 h-6 text-secondary" />
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '2rem', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+              <TrendingUp style={{ width: '1.5rem', height: '1.5rem', color: '#EC4899' }} />
               At The Peak
             </h2>
-            <div className="space-y-4">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {peak.map((audio, i) => (
                 <motion.div
                   key={audio.id}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="glass rounded-2xl p-6 flex items-center justify-between hover:border-primary/30 transition-all"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '1.5rem',
+                    borderRadius: '1.5rem',
+                    background: 'rgba(26, 26, 46, 0.8)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(12px)'
+                  }}
+                  className="audio-card"
                 >
-                  <div className="flex items-center gap-5">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-secondary flex items-center justify-center">
-                      <Music className="w-6 h-6 text-white" />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                    <div style={{ width: '3.5rem', height: '3.5rem', borderRadius: '1rem', background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Music style={{ width: '1.5rem', height: '1.5rem', color: 'white' }} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg">{audio.title}</h3>
-                      <p className="text-base text-text-secondary">{audio.artist}</p>
+                      <h3 style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.25rem' }}>{audio.title}</h3>
+                      <p style={{ fontSize: '1rem', color: '#94A3B8' }}>{audio.artist}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-8">
-                    <div className="text-right">
-                      <p className="font-mono font-bold text-xl text-gradient">{audio.posts}</p>
-                      <p className="text-sm text-text-secondary">posts</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+                    <div style={{ textAlign: 'right' }}>
+                      <p style={{ fontFamily: 'monospace', fontWeight: 700, fontSize: '1.25rem', background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{audio.posts}</p>
+                      <p style={{ fontSize: '0.875rem', color: '#94A3B8' }}>posts</p>
                     </div>
-                    <span className="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-medium">
+                    <span style={{ padding: '0.5rem 1rem', background: 'rgba(236, 72, 153, 0.1)', color: '#EC4899', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: 500 }}>
                       {audio.category}
                     </span>
                   </div>
@@ -123,10 +150,10 @@ export default function TrendsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="mt-20 glass rounded-2xl p-8 text-center"
+            style={{ marginTop: '4rem', padding: '2rem', borderRadius: '1.5rem', background: 'rgba(26, 26, 46, 0.8)', border: '1px solid rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(12px)', textAlign: 'center' }}
           >
-            <h3 className="font-semibold text-lg mb-3">Pro Tip</h3>
-            <p className="text-base text-text-secondary max-w-xl mx-auto">
+            <h3 style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.75rem' }}>Pro Tip</h3>
+            <p style={{ fontSize: '1rem', color: '#94A3B8', maxWidth: '600px', margin: '0 auto' }}>
               Use trending audio within 48 hours of it starting to rise. This is when the algorithm gives maximum distribution boost.
             </p>
           </motion.div>
@@ -134,6 +161,12 @@ export default function TrendsPage() {
       </main>
 
       <Footer />
+
+      <style jsx global>{`
+        .audio-card:hover {
+          border-color: rgba(139, 92, 246, 0.3) !important;
+        }
+      `}</style>
     </div>
   );
 }

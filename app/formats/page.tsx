@@ -11,63 +11,70 @@ export default function FormatsPage() {
   const mediumEngagement = contentFormats.filter(f => f.engagement === 'medium');
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: '#0a0a1a' }}>
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-24 px-6 lg:px-12">
-        <div className="max-w-6xl mx-auto">
+      <main className="flex-1 pt-24 pb-24" style={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-20"
           >
-            <div className="inline-flex items-center justify-center gap-4 mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-primary flex items-center justify-center">
-                <Lightbulb className="w-7 h-7 text-white" />
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div style={{ width: '3.5rem', height: '3.5rem', borderRadius: '1rem', background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Lightbulb style={{ width: '1.75rem', height: '1.75rem', color: 'white' }} />
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold">Content Formats</h1>
+              <h1 style={{ fontSize: '3rem', fontWeight: 700 }}>Content Formats</h1>
             </div>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
+            <p style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
               Proven formats that consistently go viral. Pick one and create.
             </p>
           </motion.div>
 
-          <div className="mb-20">
-            <h2 className="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-3">
-              <TrendingUp className="w-6 h-6 text-secondary" />
+          <div style={{ marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '2rem', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+              <TrendingUp style={{ width: '1.5rem', height: '1.5rem', color: '#EC4899' }} />
               High Engagement
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '2rem' }}>
               {highEngagement.map((format, i) => (
                 <motion.div
                   key={format.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="glass rounded-3xl p-8 lg:p-10 hover:border-primary/30 transition-all"
+                  style={{
+                    padding: '2rem',
+                    borderRadius: '1.5rem',
+                    background: 'rgba(26, 26, 46, 0.8)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(12px)'
+                  }}
+                  className="format-card"
                 >
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-semibold mb-3">{format.name}</h3>
-                    <p className="text-base text-text-secondary flex items-center justify-center gap-2">
-                      <Target className="w-4 h-4" />
+                  <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: 600, fontSize: '1.25rem', marginBottom: '0.5rem' }}>{format.name}</h3>
+                    <p style={{ fontSize: '1rem', color: '#94A3B8', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                      <Target style={{ width: '1rem', height: '1rem' }} />
                       Best for: {format.bestFor}
                     </p>
                   </div>
 
-                  <p className="text-text-secondary text-base text-center mb-8 leading-relaxed">{format.description}</p>
+                  <p style={{ color: '#94A3B8', textAlign: 'center', marginBottom: '1.5rem', lineHeight: 1.6 }}>{format.description}</p>
 
-                  <ul className="space-y-4 mb-8">
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
                     {format.tips.map((tip, j) => (
-                      <li key={j} className="text-base text-text-secondary flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                      <li key={j} style={{ color: '#94A3B8', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                        <Check style={{ width: '1.25rem', height: '1.25rem', color: '#06B6D4', flexShrink: 0, marginTop: '0.125rem' }} />
                         {tip}
                       </li>
                     ))}
                   </ul>
 
-                  <div className="pt-6 border-t border-white/5 text-center">
-                    <p className="text-base text-text-secondary">
-                      <span className="text-primary font-semibold">Example:</span> {format.example}
+                  <div style={{ paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.05)', textAlign: 'center' }}>
+                    <p style={{ color: '#94A3B8', fontSize: '1rem' }}>
+                      <span style={{ color: '#8B5CF6', fontWeight: 600 }}>Example:</span> {format.example}
                     </p>
                   </div>
                 </motion.div>
@@ -77,27 +84,34 @@ export default function FormatsPage() {
 
           {mediumEngagement.length > 0 && (
             <div>
-              <h2 className="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-3">
-                <TrendingUp className="w-6 h-6 text-accent" />
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '2rem', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+                <TrendingUp style={{ width: '1.5rem', height: '1.5rem', color: '#06B6D4' }} />
                 Medium Engagement
               </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '2rem' }}>
                 {mediumEngagement.map((format, i) => (
                   <motion.div
                     key={format.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className="glass rounded-3xl p-8 lg:p-10 hover:border-primary/30 transition-all"
+                    style={{
+                      padding: '2rem',
+                      borderRadius: '1.5rem',
+                      background: 'rgba(26, 26, 46, 0.8)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      backdropFilter: 'blur(12px)'
+                    }}
+                    className="format-card"
                   >
-                    <div className="text-center mb-6">
-                      <h3 className="text-xl font-semibold mb-3">{format.name}</h3>
-                      <p className="text-base text-text-secondary">Best for: {format.bestFor}</p>
+                    <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                      <h3 style={{ fontWeight: 600, fontSize: '1.25rem', marginBottom: '0.5rem' }}>{format.name}</h3>
+                      <p style={{ fontSize: '1rem', color: '#94A3B8' }}>Best for: {format.bestFor}</p>
                     </div>
-                    <p className="text-text-secondary text-base text-center mb-8 leading-relaxed">{format.description}</p>
-                    <div className="pt-6 border-t border-white/5 text-center">
-                      <p className="text-base text-text-secondary">
-                        <span className="text-primary font-semibold">Example:</span> {format.example}
+                    <p style={{ color: '#94A3B8', textAlign: 'center', marginBottom: '1.5rem', lineHeight: 1.6 }}>{format.description}</p>
+                    <div style={{ paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.05)', textAlign: 'center' }}>
+                      <p style={{ color: '#94A3B8', fontSize: '1rem' }}>
+                        <span style={{ color: '#8B5CF6', fontWeight: 600 }}>Example:</span> {format.example}
                       </p>
                     </div>
                   </motion.div>
@@ -109,6 +123,12 @@ export default function FormatsPage() {
       </main>
 
       <Footer />
+
+      <style jsx global>{`
+        .format-card:hover {
+          border-color: rgba(139, 92, 246, 0.3) !important;
+        }
+      `}</style>
     </div>
   );
 }

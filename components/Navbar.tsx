@@ -18,17 +18,26 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg bg-gradient-primary flex items-center justify-center">
-              <Zap className="w-5 h-5 text-white" />
+    <nav style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 50,
+      background: 'rgba(26, 26, 46, 0.8)',
+      backdropFilter: 'blur(12px)',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+    }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '4rem' }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+            <div style={{ width: '2.25rem', height: '2.25rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Zap style={{ width: '1.25rem', height: '1.25rem', color: 'white' }} />
             </div>
-            <span className="text-xl font-bold text-gradient">ReelPulse</span>
+            <span style={{ fontSize: '1.25rem', fontWeight: 700, background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ReelPulse</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }} className="desktop-nav">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -36,13 +45,19 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg transition-all duration-200 ${
-                    isActive
-                      ? 'bg-gradient-primary text-white'
-                      : 'text-text-secondary hover:text-white hover:bg-surface-light'
-                  }`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.625rem 1.25rem',
+                    borderRadius: '0.75rem',
+                    transition: 'all 0.2s ease',
+                    background: isActive ? 'linear-gradient(135deg, #8B5CF6, #EC4899)' : 'transparent',
+                    color: isActive ? 'white' : '#94A3B8'
+                  }}
+                  className="nav-link"
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon style={{ width: '1rem', height: '1rem' }} />
                   <span>{link.label}</span>
                 </Link>
               );
@@ -51,38 +66,66 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-surface-light transition-colors"
+            style={{ padding: '0.5rem', borderRadius: '0.5rem', background: 'transparent', border: 'none', cursor: 'pointer' }}
+            className="mobile-menu-btn"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X style={{ width: '1.5rem', height: '1.5rem' }} /> : <Menu style={{ width: '1.5rem', height: '1.5rem' }} />}
           </button>
         </div>
       </div>
 
       {isOpen && (
-        <div className="md:hidden glass border-t border-white/5">
-          <div className="px-6 py-4 space-y-1">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                    isActive
-                      ? 'bg-gradient-primary text-white'
-                      : 'text-text-secondary hover:text-white hover:bg-surface-light'
-                  }`}
-                >
-                  <Icon className="w-5 h-5" />
-                  <span>{link.label}</span>
-                </Link>
-              );
-            })}
-          </div>
+        <div style={{ padding: '1rem 2rem 1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }} className="mobile-menu">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  padding: '0.75rem 1rem',
+                  borderRadius: '0.75rem',
+                  transition: 'all 0.2s ease',
+                  background: isActive ? 'linear-gradient(135deg, #8B5CF6, #EC4899)' : 'transparent',
+                  color: isActive ? 'white' : '#94A3B8',
+                  marginBottom: '0.25rem'
+                }}
+              >
+                <Icon style={{ width: '1.25rem', height: '1.25rem' }} />
+                <span>{link.label}</span>
+              </Link>
+            );
+          })}
         </div>
       )}
+
+      <style jsx global>{`
+        .desktop-nav {
+          display: flex;
+        }
+        .mobile-menu-btn,
+        .mobile-menu {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none !important;
+          }
+          .mobile-menu-btn,
+          .mobile-menu {
+            display: block !important;
+          }
+        }
+        .nav-link:hover {
+          color: white !important;
+          background: rgba(139, 92, 246, 0.2) !important;
+        }
+      `}</style>
     </nav>
   );
 }

@@ -3,72 +3,94 @@ import { Zap, Globe, Heart, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-surface border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-14">
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-5">
-              <div className="w-9 h-9 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
+    <footer style={{ background: '#1a1a2e', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '3.5rem 2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2.5rem', marginBottom: '3rem' }}>
+          <div style={{ gridColumn: 'span 2' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
+              <div style={{ width: '2.25rem', height: '2.25rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Zap style={{ width: '1.25rem', height: '1.25rem', color: 'white' }} />
               </div>
-              <span className="text-xl font-bold text-gradient">ReelPulse</span>
+              <span style={{ fontSize: '1.25rem', fontWeight: 700, background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ReelPulse</span>
             </div>
-            <p className="text-text-secondary max-w-md leading-relaxed">
+            <p style={{ color: '#94A3B8', maxWidth: '400px', lineHeight: 1.6 }}>
               Your go-to resource for Instagram Reels trends, trending audio, and viral content strategies.
               Stay ahead of the algorithm and grow your presence in 2026.
             </p>
-            <div className="flex items-center gap-4 mt-6">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1.5rem' }}>
               <a
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-surface-light hover:bg-primary/20 transition-colors flex items-center gap-2"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.625rem 1rem',
+                  borderRadius: '0.75rem',
+                  background: '#252542',
+                  transition: 'all 0.2s ease'
+                }}
               >
-                <Globe className="w-4 h-4 text-text-secondary" />
-                <span className="text-sm text-text-secondary">GitHub</span>
+                <Globe style={{ width: '1rem', height: '1rem', color: '#94A3B8' }} />
+                <span style={{ fontSize: '0.875rem', color: '#94A3B8' }}>GitHub</span>
               </a>
               <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-surface-light hover:bg-primary/20 transition-colors flex items-center gap-2"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.625rem 1rem',
+                  borderRadius: '0.75rem',
+                  background: '#252542',
+                  transition: 'all 0.2s ease'
+                }}
               >
-                <ExternalLink className="w-4 h-4 text-text-secondary" />
-                <span className="text-sm text-text-secondary">Twitter</span>
+                <ExternalLink style={{ width: '1rem', height: '1rem', color: '#94A3B8' }} />
+                <span style={{ fontSize: '0.875rem', color: '#94A3B8' }}>Twitter</span>
               </a>
             </div>
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg mb-5">Quick Links</h3>
-            <ul className="space-y-3">
-              <li><Link href="/" className="text-text-secondary hover:text-white transition-colors">Home</Link></li>
-              <li><Link href="/trends" className="text-text-secondary hover:text-white transition-colors">Trending Audio</Link></li>
-              <li><Link href="/formats" className="text-text-secondary hover:text-white transition-colors">Content Formats</Link></li>
-              <li><Link href="/tips" className="text-text-secondary hover:text-white transition-colors">Algorithm Tips</Link></li>
+            <h3 style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '1.25rem' }}>Quick Links</h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <li><Link href="/" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Home</Link></li>
+              <li><Link href="/trends" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Trending Audio</Link></li>
+              <li><Link href="/formats" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Content Formats</Link></li>
+              <li><Link href="/tips" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Algorithm Tips</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg mb-5">Resources</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-text-secondary hover:text-white transition-colors">Instagram Creator Guide</a></li>
-              <li><a href="#" className="text-text-secondary hover:text-white transition-colors">Analytics Dashboard</a></li>
-              <li><a href="#" className="text-text-secondary hover:text-white transition-colors">Content Calendar</a></li>
-              <li><a href="#" className="text-text-secondary hover:text-white transition-colors">Newsletter</a></li>
+            <h3 style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '1.25rem' }}>Resources</h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <li><a href="#" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Instagram Creator Guide</a></li>
+              <li><a href="#" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Analytics Dashboard</a></li>
+              <li><a href="#" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Content Calendar</a></li>
+              <li><a href="#" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Newsletter</a></li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-text-secondary text-sm">
-            Made with <Heart className="w-4 h-4 inline text-secondary" /> for content creators
+        <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+          <p style={{ color: '#94A3B8', fontSize: '0.875rem' }}>
+            Made with <Heart style={{ width: '1rem', height: '1rem', display: 'inline', color: '#EC4899' }} /> for content creators
           </p>
-          <p className="text-text-secondary text-sm">
+          <p style={{ color: '#94A3B8', fontSize: '0.875rem' }}>
             Updated weekly for April 2026
           </p>
         </div>
       </div>
+
+      <style jsx global>{`
+        .footer-link:hover {
+          color: white !important;
+        }
+      `}</style>
     </footer>
   );
 }

@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { trendingVideos } from '@/lib/trends';
 import { motion } from 'framer-motion';
-import { ArrowRight, Video, Music, Lightbulb, BarChart3, Play, TrendingUp } from 'lucide-react';
+import { ArrowRight, Video, Music, Lightbulb, BarChart3, Play, TrendingUp, Eye, Heart } from 'lucide-react';
 
 const navItems = [
   { href: '/videos', label: 'Trending Videos', icon: Video },
@@ -14,55 +14,109 @@ const navItems = [
   { href: '/tips', label: 'Algorithm', icon: BarChart3 },
 ];
 
-const thumbnailGradients: { [key: string]: string } = {
-  '1': 'from-violet-600 via-purple-600 to-fuchsia-600',
-  '2': 'from-emerald-600 via-teal-600 to-cyan-600',
-  '3': 'from-rose-500 via-pink-500 to-fuchsia-500',
-  '4': 'from-amber-500 via-orange-500 to-red-500',
-  '5': 'from-slate-700 via-zinc-700 to-neutral-800',
-  '6': 'from-blue-600 via-indigo-600 to-violet-600',
-  '7': 'from-pink-600 via-rose-600 to-red-600',
-  '8': 'from-cyan-500 via-sky-500 to-blue-500',
-};
+const videoThumbnails = [
+  {
+    id: 1,
+    src: 'https://picsum.photos/seed/reels1/600/800',
+    emoji: '🎯',
+    title: 'Beating Procrastination'
+  },
+  {
+    id: 2,
+    src: 'https://picsum.photos/seed/reels2/600/800',
+    emoji: '✨',
+    title: '5 Life-Changing Habits'
+  },
+  {
+    id: 3,
+    src: 'https://picsum.photos/seed/reels3/600/800',
+    emoji: '💄',
+    title: 'Room Makeover'
+  },
+  {
+    id: 4,
+    src: 'https://picsum.photos/seed/reels4/600/800',
+    emoji: '📱',
+    title: 'Phone Comparison'
+  },
+  {
+    id: 5,
+    src: 'https://picsum.photos/seed/reels5/600/800',
+    emoji: '😱',
+    title: 'Scary Story'
+  },
+  {
+    id: 6,
+    src: 'https://picsum.photos/seed/reels6/600/800',
+    emoji: '🔥',
+    title: 'Hot Takes Debate'
+  },
+  {
+    id: 7,
+    src: 'https://picsum.photos/seed/reels7/600/800',
+    emoji: '👗',
+    title: 'Fashion Reveal'
+  },
+  {
+    id: 8,
+    src: 'https://picsum.photos/seed/reels8/600/800',
+    emoji: '💃',
+    title: 'Dance Trend'
+  },
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: '#0a0a1a' }}>
       <Navbar />
-      <main className="flex-1 pt-16">
-        <section className="min-h-[90vh] flex items-center px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto w-full">
+
+      <main className="flex-1 pt-20">
+        <section className="min-h-[85vh] flex items-center justify-center px-8 py-16">
+          <div style={{ maxWidth: '1400px', margin: '0 auto', width: '100%' }}>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center"
+              className="text-center mb-20"
             >
-              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full glass mb-10">
-                <span className="w-3 h-3 rounded-full bg-secondary pulse-glow" />
-                <span className="text-sm text-text-secondary">Live Trending • April 2026</span>
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full mb-12" style={{ background: 'rgba(139, 92, 246, 0.15)', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
+                <span className="w-3 h-3 rounded-full" style={{ background: '#EC4899' }} />
+                <span className="text-base" style={{ color: '#94A3B8' }}>Live Trending • April 2026</span>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-10 leading-tight tracking-tight">
+              <h1 style={{ fontSize: 'clamp(3rem, 8vw, 5.5rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '2rem' }}>
                 What's actually
                 <br />
-                <span className="text-gradient">trending on Reels</span>
+                <span style={{ background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>trending on Reels</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-16 leading-relaxed">
+              <p style={{ fontSize: '1.4rem', color: '#94A3B8', maxWidth: '700px', margin: '0 auto 3rem', lineHeight: 1.6 }}>
                 Real data on viral videos, trending audio, and formats that work.
                 Updated weekly.
               </p>
 
-              <div className="flex flex-wrap justify-center gap-5 mb-16">
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem' }}>
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="group flex items-center gap-4 px-8 py-5 glass rounded-2xl hover:border-primary/50 transition-all min-w-[260px] justify-center hover:scale-105"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '1rem',
+                      padding: '1.25rem 2.5rem',
+                      borderRadius: '1rem',
+                      background: 'rgba(26, 26, 46, 0.8)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      backdropFilter: 'blur(12px)',
+                      minWidth: '280px',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s ease'
+                    }}
+                    className="nav-card"
                   >
-                    <item.icon className="w-7 h-7 text-primary" />
-                    <span className="font-semibold text-lg group-hover:text-gradient transition-all">{item.label}</span>
+                    <item.icon style={{ width: '1.75rem', height: '1.75rem', color: '#8B5CF6' }} />
+                    <span style={{ fontWeight: 600, fontSize: '1.2rem', color: 'white' }}>{item.label}</span>
                   </Link>
                 ))}
               </div>
@@ -70,20 +124,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-24 px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
+        <section style={{ padding: '5rem 2rem', background: 'rgba(26, 26, 46, 0.3)' }}>
+          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-5">Trending Videos</h2>
-              <p className="text-xl text-text-secondary mb-8">Most viral content this week</p>
+              <h2 style={{ fontSize: '2.75rem', fontWeight: 700, marginBottom: '1rem' }}>Trending Videos</h2>
+              <p style={{ fontSize: '1.25rem', color: '#94A3B8', marginBottom: '2rem' }}>Most viral content this week</p>
               <Link
                 href="/videos"
-                className="inline-flex items-center gap-3 text-lg text-primary hover:text-secondary transition-colors"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', color: '#8B5CF6' }}
               >
-                View all videos <ArrowRight className="w-5 h-5" />
+                View all videos <ArrowRight style={{ width: '1.25rem', height: '1.25rem' }} />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
               {trendingVideos.slice(0, 4).map((video, i) => (
                 <motion.a
                   key={video.id}
@@ -93,31 +147,100 @@ export default function Home() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="group block"
+                  style={{
+                    display: 'block',
+                    borderRadius: '1.5rem',
+                    overflow: 'hidden',
+                    background: '#1a1a2e',
+                    border: '1px solid rgba(255, 255, 255, 0.08)'
+                  }}
+                  className="video-card"
                 >
-                  <div className="relative aspect-video rounded-3xl overflow-hidden bg-surface">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${thumbnailGradients[video.id]} opacity-80`} />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center group-hover:bg-black/40 transition-all group-hover:scale-110">
-                        <Play className="w-9 h-9 lg:w-11 lg:h-11 text-white ml-1" />
+                  <div style={{ position: 'relative', aspectRatio: '16/9' }}>
+                    <img
+                      src={videoThumbnails[i].src}
+                      alt={video.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                    <div style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%)'
+                    }} />
+                    <div style={{
+                      position: 'absolute',
+                      inset: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}>
+                      <div style={{
+                        width: '5rem',
+                        height: '5rem',
+                        borderRadius: '50%',
+                        background: 'rgba(0, 0, 0, 0.4)',
+                        backdropFilter: 'blur(8px)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                        <Play style={{ width: '2rem', height: '2rem', color: 'white', marginLeft: '0.25rem' }} />
                       </div>
                     </div>
-                    <div className="absolute top-5 left-5 flex gap-3">
-                      <span className="px-4 py-2 bg-black/50 backdrop-blur-md rounded-full text-sm font-semibold">
-                        {video.format}
+                    <span style={{
+                      position: 'absolute',
+                      top: '1rem',
+                      left: '1rem',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '9999px',
+                      background: 'rgba(0, 0, 0, 0.6)',
+                      backdropFilter: 'blur(8px)',
+                      fontSize: '0.875rem',
+                      fontWeight: 600
+                    }}>
+                      {video.format}
+                    </span>
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '1rem',
+                      left: '1rem',
+                      right: '1rem',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center'
+                    }}>
+                      <span style={{
+                        padding: '0.5rem 1rem',
+                        borderRadius: '9999px',
+                        background: 'rgba(0, 0, 0, 0.6)',
+                        backdropFilter: 'blur(8px)',
+                        fontSize: '0.875rem'
+                      }}>
+                        {video.views} views
                       </span>
                       {video.trend === 'rising' && (
-                        <span className="px-4 py-2 bg-emerald-500/80 backdrop-blur-md rounded-full text-sm font-semibold flex items-center gap-1">
-                          <TrendingUp className="w-4 h-4" /> Rising
+                        <span style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '9999px',
+                          background: 'rgba(16, 185, 129, 0.8)',
+                          fontSize: '0.875rem',
+                          fontWeight: 600,
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.25rem'
+                        }}>
+                          <TrendingUp style={{ width: '1rem', height: '1rem' }} /> Rising
                         </span>
                       )}
                     </div>
-                    <div className="absolute bottom-5 right-5 px-4 py-2 bg-black/50 backdrop-blur-md rounded-full text-sm font-medium">
-                      {video.views} views
-                    </div>
-                    <div className="absolute bottom-5 left-5 right-20">
-                      <p className="text-white font-semibold text-lg truncate">{video.title}</p>
-                    </div>
+                  </div>
+                  <div style={{ padding: '1.5rem' }}>
+                    <h3 style={{ fontWeight: 600, fontSize: '1.25rem', textAlign: 'center', marginBottom: '0.5rem' }}>{video.title}</h3>
+                    <p style={{ fontSize: '1rem', color: '#94A3B8', textAlign: 'center' }}>{video.creator}</p>
                   </div>
                 </motion.a>
               ))}
@@ -125,43 +248,62 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-24 px-6 lg:px-12 bg-surface/30">
-          <div className="max-w-7xl mx-auto">
+        <section style={{ padding: '5rem 2rem' }}>
+          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-5">Explore by Category</h2>
-              <p className="text-xl text-text-secondary">Find what's trending in your niche</p>
+              <h2 style={{ fontSize: '2.75rem', fontWeight: 700, marginBottom: '1rem' }}>Explore by Category</h2>
+              <p style={{ fontSize: '1.25rem', color: '#94A3B8' }}>Find what's trending in your niche</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 lg:gap-8">
-              {['POV / Relatable', 'Educational', 'GRWM', 'Before & After', 'Storytime', 'Debates', 'Transitions', 'Trending Audio'].map((cat, i) => (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+              {['POV / Relatable', 'Educational', 'GRWM', 'Before & After', 'Storytime', 'Debates', 'Transitions', 'Trending Audio'].map((cat) => (
                 <Link
                   key={cat}
                   href="/formats"
-                  className="group glass rounded-3xl p-8 lg:p-10 text-center hover:border-primary/50 transition-all hover:scale-105"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '2rem',
+                    borderRadius: '1.5rem',
+                    background: 'rgba(26, 26, 46, 0.8)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(12px)',
+                    textAlign: 'center',
+                    transition: 'all 0.3s ease'
+                  }}
+                  className="nav-card"
                 >
-                  <span className="font-semibold text-lg group-hover:text-gradient transition-all">{cat}</span>
+                  <span style={{ fontWeight: 600, fontSize: '1.1rem', color: 'white' }}>{cat}</span>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-24 px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
+        <section style={{ padding: '5rem 2rem', background: 'rgba(26, 26, 46, 0.3)' }}>
+          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-5">Platform Stats</h2>
+              <h2 style={{ fontSize: '2.75rem', fontWeight: 700, marginBottom: '1rem' }}>Platform Stats</h2>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
               {[
                 { label: 'Daily Plays', value: '200B+', icon: Play },
                 { label: 'Audio Boost', value: '+42%', icon: Music },
                 { label: 'Shares', value: '4.5B/day', icon: TrendingUp },
                 { label: 'ROI Increase', value: '+29%', icon: BarChart3 }
               ].map((stat) => (
-                <div key={stat.label} className="glass rounded-3xl p-8 lg:p-10 text-center hover:border-primary/30 transition-all">
-                  <stat.icon className="w-10 h-10 text-primary mx-auto mb-5" />
-                  <p className="text-4xl lg:text-5xl font-bold font-mono text-gradient">{stat.value}</p>
-                  <p className="text-lg text-text-secondary mt-3">{stat.label}</p>
+                <div style={{
+                  padding: '2.5rem',
+                  borderRadius: '1.5rem',
+                  background: 'rgba(26, 26, 46, 0.8)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backdropFilter: 'blur(12px)',
+                  textAlign: 'center'
+                }}>
+                  <stat.icon style={{ width: '2.5rem', height: '2.5rem', color: '#8B5CF6', margin: '0 auto 1.25rem' }} />
+                  <p style={{ fontSize: '2.5rem', fontWeight: 700, background: 'linear-gradient(135deg, #8B5CF6, #EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontFamily: 'monospace' }}>{stat.value}</p>
+                  <p style={{ fontSize: '1.1rem', color: '#94A3B8', marginTop: '0.75rem' }}>{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -170,6 +312,17 @@ export default function Home() {
       </main>
 
       <Footer />
+
+      <style jsx global>{`
+        .nav-card:hover {
+          border-color: rgba(139, 92, 246, 0.5) !important;
+          transform: translateY(-4px);
+        }
+        .video-card:hover {
+          border-color: rgba(139, 92, 246, 0.4) !important;
+          transform: translateY(-4px);
+        }
+      `}</style>
     </div>
   );
 }
