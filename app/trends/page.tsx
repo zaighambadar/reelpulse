@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import { trendingAudio } from '@/lib/trends';
 import { motion } from 'framer-motion';
-import { Music, TrendingUp, Clock, ArrowUpRight, ArrowDownRight, Minus } from 'lucide-react';
+import { Music, TrendingUp, ArrowUpRight } from 'lucide-react';
 
 export default function TrendsPage() {
   const rising = trendingAudio.filter(t => t.trend === 'rising');
@@ -17,19 +17,19 @@ export default function TrendsPage() {
       <AnimatedBackground />
 
       <main className="flex-1 pt-24 pb-16 px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="text-center mb-12"
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="inline-flex items-center justify-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
                 <Music className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-4xl font-bold">Trending Audio</h1>
             </div>
-            <p className="text-text-secondary text-lg">
+            <p className="text-text-secondary text-lg max-w-xl mx-auto">
               The sounds dominating Reels this week. Use these for maximum reach.
             </p>
           </motion.div>
@@ -48,7 +48,7 @@ export default function TrendsPage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <h2 className="text-xl font-bold mb-6 text-center flex items-center justify-center gap-2">
               <ArrowUpRight className="w-5 h-5 text-accent" />
               Rising Fast
             </h2>
@@ -56,8 +56,8 @@ export default function TrendsPage() {
               {rising.map((audio, i) => (
                 <motion.div
                   key={audio.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
                   className="glass rounded-xl p-5 flex items-center justify-between hover:border-primary/30 transition-all"
                 >
@@ -85,7 +85,7 @@ export default function TrendsPage() {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <h2 className="text-xl font-bold mb-6 text-center flex items-center justify-center gap-2">
               <TrendingUp className="w-5 h-5 text-secondary" />
               At The Peak
             </h2>
@@ -93,8 +93,8 @@ export default function TrendsPage() {
               {peak.map((audio, i) => (
                 <motion.div
                   key={audio.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
                   className="glass rounded-xl p-5 flex items-center justify-between hover:border-primary/30 transition-all"
                 >
@@ -125,7 +125,7 @@ export default function TrendsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="mt-12 glass rounded-xl p-6"
+            className="mt-12 glass rounded-xl p-6 text-center"
           >
             <h3 className="font-semibold mb-2">Pro Tip</h3>
             <p className="text-text-secondary text-sm">

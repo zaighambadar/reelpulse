@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import { algorithmTips, postingTimes } from '@/lib/trends';
 import { motion } from 'framer-motion';
-import { BarChart3, Clock, MapPin, CheckCircle2, Zap, Share2, AlertCircle } from 'lucide-react';
+import { BarChart3, Clock, CheckCircle2, Zap, Share2, AlertCircle } from 'lucide-react';
 
 export default function TipsPage() {
   const critical = algorithmTips.filter(t => t.priority === 'critical');
@@ -29,19 +29,19 @@ export default function TipsPage() {
       <AnimatedBackground />
 
       <main className="flex-1 pt-24 pb-16 px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="text-center mb-12"
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="inline-flex items-center justify-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-4xl font-bold">Algorithm Tips</h1>
             </div>
-            <p className="text-text-secondary text-lg">
+            <p className="text-text-secondary text-lg max-w-xl mx-auto">
               What actually matters for the 2026 algorithm. Focus on what moves the needle.
             </p>
           </motion.div>
@@ -49,8 +49,7 @@ export default function TipsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-8">
               <div>
-                <h2 className="text-lg font-bold mb-4 text-secondary flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-secondary" />
+                <h2 className="text-lg font-bold mb-4 text-secondary text-center">
                   Critical (Must Follow)
                 </h2>
                 <div className="space-y-3">
@@ -59,8 +58,8 @@ export default function TipsPage() {
                     return (
                       <motion.div
                         key={tip.id}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
                         className="glass rounded-xl p-5 border-secondary/30"
                       >
@@ -80,8 +79,7 @@ export default function TipsPage() {
               </div>
 
               <div>
-                <h2 className="text-lg font-bold mb-4 text-accent flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-accent" />
+                <h2 className="text-lg font-bold mb-4 text-accent text-center">
                   Important
                 </h2>
                 <div className="space-y-3">
@@ -90,8 +88,8 @@ export default function TipsPage() {
                     return (
                       <motion.div
                         key={tip.id}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
                         className="glass rounded-xl p-5"
                       >
@@ -111,8 +109,7 @@ export default function TipsPage() {
               </div>
 
               <div>
-                <h2 className="text-lg font-bold mb-4 text-primary flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
+                <h2 className="text-lg font-bold mb-4 text-primary text-center">
                   Nice to Have
                 </h2>
                 <div className="space-y-3">
@@ -121,8 +118,8 @@ export default function TipsPage() {
                     return (
                       <motion.div
                         key={tip.id}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
                         className="glass rounded-xl p-5 opacity-80"
                       >
@@ -149,9 +146,9 @@ export default function TipsPage() {
                 transition={{ delay: 0.2 }}
                 className="glass rounded-xl p-6 sticky top-24"
               >
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center justify-center gap-2 mb-4">
                   <Clock className="w-5 h-5 text-primary" />
-                  <h3 className="font-bold">Best Times (US)</h3>
+                  <h3 className="font-bold text-center">Best Times (US)</h3>
                 </div>
                 <div className="space-y-2">
                   {postingTimes.us.map((day, i) => (
@@ -169,8 +166,8 @@ export default function TipsPage() {
                 transition={{ delay: 0.3 }}
                 className="glass rounded-xl p-6"
               >
-                <h3 className="font-bold mb-4">Quick Checklist</h3>
-                <div className="space-y-2">
+                <h3 className="font-bold text-center mb-4">Quick Checklist</h3>
+                <div className="space-y-3">
                   {[
                     'Hook in 1.5 sec',
                     'Use trending audio',
@@ -178,8 +175,8 @@ export default function TipsPage() {
                     'End with CTA',
                     'Post 4-7x/week'
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-accent" />
+                    <div key={i} className="flex items-center gap-3 text-sm">
+                      <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
                       <span className="text-text-secondary">{item}</span>
                     </div>
                   ))}
