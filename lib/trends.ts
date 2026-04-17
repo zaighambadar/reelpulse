@@ -147,7 +147,7 @@ export const trendingVideos: TrendingVideo[] = [
     trend: 'peak',
     description: "A relatable take on overcoming procrastination that resonated with millions",
     whyItWorks: "Strong hook in first second, relatable scenario, ends with satisfying twist",
-    thumbnail: "pov"
+    thumbnail: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=450&fit=crop"
   },
   {
     id: 2,
@@ -161,7 +161,7 @@ export const trendingVideos: TrendingVideo[] = [
     trend: 'peak',
     description: "Bite-sized productivity tips delivered in a visually engaging format",
     whyItWorks: "Bold claim hook, numbered format drives saves, actionable advice",
-    thumbnail: "educational"
+    thumbnail: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=450&fit=crop"
   },
   {
     id: 3,
@@ -175,7 +175,7 @@ export const trendingVideos: TrendingVideo[] = [
     trend: 'peak',
     description: "Quick get-ready routine before a major life event",
     whyItWorks: "Relatable context, satisfying transformations, aspirational yet achievable",
-    thumbnail: "grwm"
+    thumbnail: "https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=800&h=450&fit=crop"
   },
   {
     id: 4,
@@ -189,7 +189,7 @@ export const trendingVideos: TrendingVideo[] = [
     trend: 'peak',
     description: "Satisfying room transformation that kept viewers watching",
     whyItWorks: "Dramatic contrast, time-lapse progression, emotional payoff",
-    thumbnail: "beforeafter"
+    thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=450&fit=crop"
   },
   {
     id: 5,
@@ -203,7 +203,7 @@ export const trendingVideos: TrendingVideo[] = [
     trend: 'rising',
     description: "Hooked viewers with a cliffhanger story that demanded a follow-up",
     whyItWorks: "Mid-action start, builds suspense, ended on cliffhanger for part 2",
-    thumbnail: "storytime"
+    thumbnail: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=800&h=450&fit=crop"
   },
   {
     id: 6,
@@ -217,7 +217,7 @@ export const trendingVideos: TrendingVideo[] = [
     trend: 'peak',
     description: "Two perspectives debating a universally relatable topic",
     whyItWorks: "Engages both sides of the argument, comment bait ending",
-    thumbnail: "debate"
+    thumbnail: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=450&fit=crop"
   },
   {
     id: 7,
@@ -231,7 +231,7 @@ export const trendingVideos: TrendingVideo[] = [
     trend: 'peak',
     description: "Dramatic product reveal using the stomp transition trend",
     whyItWorks: "Unexpected transition, visual impact, creates intrigue",
-    thumbnail: "stomp"
+    thumbnail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=450&fit=crop"
   },
   {
     id: 8,
@@ -245,7 +245,7 @@ export const trendingVideos: TrendingVideo[] = [
     trend: 'rising',
     description: "Jumped on the World Stop trend with a unique twist",
     whyItWorks: "Used trending audio within 48 hours, added unique creative spin",
-    thumbnail: "trending"
+    thumbnail: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=450&fit=crop"
   }
 ];
 

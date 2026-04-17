@@ -53,9 +53,15 @@ export default function VideosPage() {
                     rel="noopener noreferrer"
                     className="block"
                   >
-                    <div className="aspect-video bg-gradient-to-br from-primary/30 via-surface to-secondary/30 flex items-center justify-center relative">
+                    <div className="aspect-video relative overflow-hidden">
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
                           <Play className="w-10 h-10 text-white ml-1" />
                         </div>
                       </div>
@@ -115,9 +121,15 @@ export default function VideosPage() {
                   transition={{ delay: i * 0.05 }}
                   className="glass rounded-2xl overflow-hidden group block"
                 >
-                  <div className="aspect-[9/16] max-h-80 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center relative">
+                  <div className="aspect-[9/16] max-h-80 relative overflow-hidden">
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Play className="w-7 h-7 text-white ml-0.5" />
                       </div>
                     </div>

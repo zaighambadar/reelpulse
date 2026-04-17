@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
+import { trendingVideos } from '@/lib/trends';
 import { motion } from 'framer-motion';
 import { ArrowRight, Video, Music, Lightbulb, BarChart3, Play, Heart, Eye } from 'lucide-react';
 
@@ -13,6 +14,8 @@ const navItems = [
   { href: '/formats', label: 'Formats', icon: Lightbulb },
   { href: '/tips', label: 'Algorithm', icon: BarChart3 },
 ];
+
+const featuredVideos = trendingVideos.slice(0, 4);
 
 export default function Home() {
   return (
@@ -76,12 +79,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {[
-                { title: 'Beating procrastination', views: '12.4M', format: 'POV', id: '1' },
-                { title: '5 habits that changed my life', views: '8.7M', format: 'Educational', id: '2' },
-                { title: 'Room transformation 30 days', views: '22.1M', format: 'Before/After', id: '3' },
-                { title: 'iPhone vs Android users', views: '9.8M', format: 'Debate', id: '4' }
-              ].map((video) => (
+              {featuredVideos.map((video) => (
                 <a
                   key={video.id}
                   href={`https://www.instagram.com/reel/${video.id}`}
@@ -89,9 +87,15 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="glass rounded-3xl overflow-hidden group block"
                 >
-                  <div className="aspect-video bg-gradient-to-br from-primary/40 via-surface to-secondary/40 flex items-center justify-center relative">
+                  <div className="aspect-video relative overflow-hidden">
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Play className="w-10 h-10 text-white ml-1" />
                       </div>
                     </div>
