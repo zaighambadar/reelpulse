@@ -3,10 +3,9 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import AnimatedBackground from '@/components/AnimatedBackground';
 import { trendingVideos } from '@/lib/trends';
 import { motion } from 'framer-motion';
-import { ArrowRight, Video, Music, Lightbulb, BarChart3, Play, Heart, Eye } from 'lucide-react';
+import { ArrowRight, Video, Music, Lightbulb, BarChart3, Play, TrendingUp } from 'lucide-react';
 
 const navItems = [
   { href: '/videos', label: 'Trending Videos', icon: Video },
@@ -15,49 +14,55 @@ const navItems = [
   { href: '/tips', label: 'Algorithm', icon: BarChart3 },
 ];
 
-const featuredVideos = trendingVideos.slice(0, 4);
+const thumbnailGradients: { [key: string]: string } = {
+  '1': 'from-violet-600 via-purple-600 to-fuchsia-600',
+  '2': 'from-emerald-600 via-teal-600 to-cyan-600',
+  '3': 'from-rose-500 via-pink-500 to-fuchsia-500',
+  '4': 'from-amber-500 via-orange-500 to-red-500',
+  '5': 'from-slate-700 via-zinc-700 to-neutral-800',
+  '6': 'from-blue-600 via-indigo-600 to-violet-600',
+  '7': 'from-pink-600 via-rose-600 to-red-600',
+  '8': 'from-cyan-500 via-sky-500 to-blue-500',
+};
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <AnimatedBackground />
-
       <main className="flex-1 pt-16">
-        <section className="min-h-[85vh] flex items-center px-8">
-          <div className="max-w-5xl mx-auto w-full">
+        <section className="min-h-[90vh] flex items-center px-6 lg:px-12">
+          <div className="max-w-7xl mx-auto w-full">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full glass mb-12">
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full glass mb-10">
                 <span className="w-3 h-3 rounded-full bg-secondary pulse-glow" />
-                <span className="text-sm text-text-secondary">Live • April 2026</span>
+                <span className="text-sm text-text-secondary">Live Trending • April 2026</span>
               </div>
 
-              <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-10 leading-tight tracking-tight">
                 What's actually
                 <br />
                 <span className="text-gradient">trending on Reels</span>
               </h1>
 
-              <p className="text-2xl text-text-secondary max-w-2xl mx-auto mb-16">
+              <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-16 leading-relaxed">
                 Real data on viral videos, trending audio, and formats that work.
-                <br />
                 Updated weekly.
               </p>
 
-              <div className="flex flex-wrap justify-center gap-6 mb-24">
+              <div className="flex flex-wrap justify-center gap-5 mb-16">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="group flex items-center gap-4 px-10 py-5 glass rounded-2xl hover:border-primary/50 transition-all min-w-[220px] justify-center"
+                    className="group flex items-center gap-4 px-8 py-5 glass rounded-2xl hover:border-primary/50 transition-all min-w-[260px] justify-center hover:scale-105"
                   >
-                    <item.icon className="w-6 h-6 text-primary" />
-                    <span className="font-semibold text-xl group-hover:text-gradient transition-all">{item.label}</span>
+                    <item.icon className="w-7 h-7 text-primary" />
+                    <span className="font-semibold text-lg group-hover:text-gradient transition-all">{item.label}</span>
                   </Link>
                 ))}
               </div>
@@ -65,94 +70,98 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20 px-8">
-          <div className="max-w-5xl mx-auto">
+        <section className="py-24 px-6 lg:px-12">
+          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold mb-4">Trending Videos</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-5">Trending Videos</h2>
               <p className="text-xl text-text-secondary mb-8">Most viral content this week</p>
               <Link
                 href="/videos"
-                className="inline-flex items-center gap-3 text-xl text-primary hover:text-secondary transition-colors"
+                className="inline-flex items-center gap-3 text-lg text-primary hover:text-secondary transition-colors"
               >
-                View all videos <ArrowRight className="w-6 h-6" />
+                View all videos <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {featuredVideos.map((video) => (
-                <a
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+              {trendingVideos.slice(0, 4).map((video, i) => (
+                <motion.a
                   key={video.id}
                   href={`https://www.instagram.com/reel/${video.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass rounded-3xl overflow-hidden group block"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group block"
                 >
-                  <div className="aspect-video relative overflow-hidden">
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="relative aspect-video rounded-3xl overflow-hidden bg-surface">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${thumbnailGradients[video.id]} opacity-80`} />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Play className="w-10 h-10 text-white ml-1" />
+                      <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center group-hover:bg-black/40 transition-all group-hover:scale-110">
+                        <Play className="w-9 h-9 lg:w-11 lg:h-11 text-white ml-1" />
                       </div>
                     </div>
-                    <span className="absolute top-6 left-6 px-5 py-2 bg-black/60 backdrop-blur rounded-full text-base font-semibold">
-                      {video.format}
-                    </span>
-                    <span className="absolute bottom-6 right-6 px-5 py-2 bg-black/60 backdrop-blur rounded-full text-base font-medium">
+                    <div className="absolute top-5 left-5 flex gap-3">
+                      <span className="px-4 py-2 bg-black/50 backdrop-blur-md rounded-full text-sm font-semibold">
+                        {video.format}
+                      </span>
+                      {video.trend === 'rising' && (
+                        <span className="px-4 py-2 bg-emerald-500/80 backdrop-blur-md rounded-full text-sm font-semibold flex items-center gap-1">
+                          <TrendingUp className="w-4 h-4" /> Rising
+                        </span>
+                      )}
+                    </div>
+                    <div className="absolute bottom-5 right-5 px-4 py-2 bg-black/50 backdrop-blur-md rounded-full text-sm font-medium">
                       {video.views} views
-                    </span>
+                    </div>
+                    <div className="absolute bottom-5 left-5 right-20">
+                      <p className="text-white font-semibold text-lg truncate">{video.title}</p>
+                    </div>
                   </div>
-                  <div className="p-8">
-                    <h3 className="font-semibold text-2xl text-center mb-3 group-hover:text-gradient transition-all">{video.title}</h3>
-                    <p className="text-lg text-text-secondary text-center">Tap to watch on Instagram</p>
-                  </div>
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-20 px-8 bg-surface/30">
-          <div className="max-w-5xl mx-auto">
+        <section className="py-24 px-6 lg:px-12 bg-surface/30">
+          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold mb-4">Explore by Category</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-5">Explore by Category</h2>
               <p className="text-xl text-text-secondary">Find what's trending in your niche</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {['POV / Relatable', 'Educational', 'GRWM', 'Before & After', 'Storytime', 'Debates', 'Transitions', 'Trending Audio'].map((cat) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 lg:gap-8">
+              {['POV / Relatable', 'Educational', 'GRWM', 'Before & After', 'Storytime', 'Debates', 'Transitions', 'Trending Audio'].map((cat, i) => (
                 <Link
                   key={cat}
                   href="/formats"
-                  className="glass rounded-2xl p-8 text-center hover:border-primary/50 transition-all group"
+                  className="group glass rounded-3xl p-8 lg:p-10 text-center hover:border-primary/50 transition-all hover:scale-105"
                 >
-                  <span className="font-semibold text-xl group-hover:text-gradient transition-all">{cat}</span>
+                  <span className="font-semibold text-lg group-hover:text-gradient transition-all">{cat}</span>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-20 px-8">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-8">Key Stats</h2>
+        <section className="py-24 px-6 lg:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-5">Platform Stats</h2>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10">
               {[
                 { label: 'Daily Plays', value: '200B+', icon: Play },
                 { label: 'Audio Boost', value: '+42%', icon: Music },
-                { label: 'Avg. Shares', value: '4.5B/day', icon: Heart },
-                { label: 'ROI Increase', value: '+29%', icon: Eye }
+                { label: 'Shares', value: '4.5B/day', icon: TrendingUp },
+                { label: 'ROI Increase', value: '+29%', icon: BarChart3 }
               ].map((stat) => (
-                <div key={stat.label} className="glass rounded-2xl p-8 text-center">
-                  <stat.icon className="w-8 h-8 text-primary mx-auto mb-4" />
-                  <p className="text-4xl font-bold font-mono text-gradient">{stat.value}</p>
-                  <p className="text-lg text-text-secondary mt-2">{stat.label}</p>
+                <div key={stat.label} className="glass rounded-3xl p-8 lg:p-10 text-center hover:border-primary/30 transition-all">
+                  <stat.icon className="w-10 h-10 text-primary mx-auto mb-5" />
+                  <p className="text-4xl lg:text-5xl font-bold font-mono text-gradient">{stat.value}</p>
+                  <p className="text-lg text-text-secondary mt-3">{stat.label}</p>
                 </div>
               ))}
             </div>

@@ -2,7 +2,6 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import AnimatedBackground from '@/components/AnimatedBackground';
 import { contentFormats } from '@/lib/trends';
 import { motion } from 'framer-motion';
 import { Lightbulb, TrendingUp, Target, Check } from 'lucide-react';
@@ -14,27 +13,26 @@ export default function FormatsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <AnimatedBackground />
 
-      <main className="flex-1 pt-24 pb-24 px-8">
-        <div className="max-w-5xl mx-auto">
+      <main className="flex-1 pt-24 pb-24 px-6 lg:px-12">
+        <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-20"
           >
             <div className="inline-flex items-center justify-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-primary flex items-center justify-center">
-                <Lightbulb className="w-6 h-6 text-white" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-primary flex items-center justify-center">
+                <Lightbulb className="w-7 h-7 text-white" />
               </div>
-              <h1 className="text-5xl font-bold">Content Formats</h1>
+              <h1 className="text-4xl md:text-5xl font-bold">Content Formats</h1>
             </div>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
               Proven formats that consistently go viral. Pick one and create.
             </p>
           </motion.div>
 
-          <div className="mb-16">
+          <div className="mb-20">
             <h2 className="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-3">
               <TrendingUp className="w-6 h-6 text-secondary" />
               High Engagement
@@ -46,7 +44,7 @@ export default function FormatsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="glass rounded-3xl p-8 hover:border-primary/30 transition-all"
+                  className="glass rounded-3xl p-8 lg:p-10 hover:border-primary/30 transition-all"
                 >
                   <div className="text-center mb-6">
                     <h3 className="text-xl font-semibold mb-3">{format.name}</h3>
@@ -90,7 +88,7 @@ export default function FormatsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className="glass rounded-3xl p-8 hover:border-primary/30 transition-all"
+                    className="glass rounded-3xl p-8 lg:p-10 hover:border-primary/30 transition-all"
                   >
                     <div className="text-center mb-6">
                       <h3 className="text-xl font-semibold mb-3">{format.name}</h3>

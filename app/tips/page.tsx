@@ -2,7 +2,6 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import AnimatedBackground from '@/components/AnimatedBackground';
 import { algorithmTips, postingTimes } from '@/lib/trends';
 import { motion } from 'framer-motion';
 import { BarChart3, Clock, CheckCircle2, Zap, Share2, AlertCircle } from 'lucide-react';
@@ -26,27 +25,26 @@ export default function TipsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <AnimatedBackground />
 
-      <main className="flex-1 pt-24 pb-24 px-8">
-        <div className="max-w-5xl mx-auto">
+      <main className="flex-1 pt-24 pb-24 px-6 lg:px-12">
+        <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-20"
           >
             <div className="inline-flex items-center justify-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-primary flex items-center justify-center">
-                <BarChart3 className="w-6 h-6 text-white" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-primary flex items-center justify-center">
+                <BarChart3 className="w-7 h-7 text-white" />
               </div>
-              <h1 className="text-5xl font-bold">Algorithm Tips</h1>
+              <h1 className="text-4xl md:text-5xl font-bold">Algorithm Tips</h1>
             </div>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
               What actually matters for the 2026 algorithm. Focus on what moves the needle.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
             <div className="lg:col-span-2 space-y-10">
               <div>
                 <h2 className="text-xl font-bold mb-6 text-secondary text-center">
@@ -58,10 +56,10 @@ export default function TipsPage() {
                     return (
                       <motion.div
                         key={tip.id}
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="glass rounded-2xl p-6 border-secondary/30"
+                        className="glass rounded-2xl p-6 lg:p-8 border-secondary/30"
                       >
                         <div className="flex items-start gap-5">
                           <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
@@ -88,10 +86,10 @@ export default function TipsPage() {
                     return (
                       <motion.div
                         key={tip.id}
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="glass rounded-2xl p-6"
+                        className="glass rounded-2xl p-6 lg:p-8"
                       >
                         <div className="flex items-start gap-5">
                           <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
@@ -118,10 +116,10 @@ export default function TipsPage() {
                     return (
                       <motion.div
                         key={tip.id}
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="glass rounded-2xl p-6 opacity-80"
+                        className="glass rounded-2xl p-6 lg:p-8 opacity-80"
                       >
                         <div className="flex items-start gap-5">
                           <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">

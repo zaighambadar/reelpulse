@@ -2,7 +2,6 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import AnimatedBackground from '@/components/AnimatedBackground';
 import { trendingAudio } from '@/lib/trends';
 import { motion } from 'framer-motion';
 import { Music, TrendingUp, ArrowUpRight } from 'lucide-react';
@@ -14,20 +13,19 @@ export default function TrendsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <AnimatedBackground />
 
-      <main className="flex-1 pt-24 pb-24 px-8">
-        <div className="max-w-4xl mx-auto">
+      <main className="flex-1 pt-24 pb-24 px-6 lg:px-12">
+        <div className="max-w-5xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-20"
           >
             <div className="inline-flex items-center justify-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-primary flex items-center justify-center">
-                <Music className="w-6 h-6 text-white" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-primary flex items-center justify-center">
+                <Music className="w-7 h-7 text-white" />
               </div>
-              <h1 className="text-5xl font-bold">Trending Audio</h1>
+              <h1 className="text-4xl md:text-5xl font-bold">Trending Audio</h1>
             </div>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
               The sounds dominating Reels this week. Use these for maximum reach.
@@ -47,7 +45,7 @@ export default function TrendsPage() {
             ))}
           </div>
 
-          <div className="mb-16">
+          <div className="mb-20">
             <h2 className="text-2xl font-bold mb-8 text-center flex items-center justify-center gap-3">
               <ArrowUpRight className="w-6 h-6 text-accent" />
               Rising Fast
@@ -56,7 +54,7 @@ export default function TrendsPage() {
               {rising.map((audio, i) => (
                 <motion.div
                   key={audio.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
                   className="glass rounded-2xl p-6 flex items-center justify-between hover:border-primary/30 transition-all"
@@ -93,7 +91,7 @@ export default function TrendsPage() {
               {peak.map((audio, i) => (
                 <motion.div
                   key={audio.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
                   className="glass rounded-2xl p-6 flex items-center justify-between hover:border-primary/30 transition-all"
@@ -125,10 +123,10 @@ export default function TrendsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="mt-16 glass rounded-2xl p-8 text-center"
+            className="mt-20 glass rounded-2xl p-8 text-center"
           >
             <h3 className="font-semibold text-lg mb-3">Pro Tip</h3>
-            <p className="text-base text-text-secondary">
+            <p className="text-base text-text-secondary max-w-xl mx-auto">
               Use trending audio within 48 hours of it starting to rise. This is when the algorithm gives maximum distribution boost.
             </p>
           </motion.div>
