@@ -68,10 +68,10 @@ export default function Footer() {
           <div>
             <h3 style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '1.25rem' }}>Resources</h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><a href="#" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Instagram Creator Guide</a></li>
-              <li><a href="#" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Analytics Dashboard</a></li>
-              <li><a href="#" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Content Calendar</a></li>
-              <li><a href="#" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Newsletter</a></li>
+              <li><Link href="/resources/creator-guide" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Instagram Creator Guide</Link></li>
+              <li><Link href="/resources" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Analytics Dashboard</Link></li>
+              <li><Link href="/resources" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Content Calendar</Link></li>
+              <li><Link href="/resources" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link">Newsletter</Link></li>
             </ul>
           </div>
         </div>
