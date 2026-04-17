@@ -96,7 +96,7 @@ export default function Home() {
               </p>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem' }}>
-                {navItems.map((item) => (
+                {navItems.map((item, i) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -256,7 +256,7 @@ export default function Home() {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
-              {['POV / Relatable', 'Educational', 'GRWM', 'Before & After', 'Storytime', 'Debates', 'Transitions', 'Trending Audio'].map((cat) => (
+              {['POV / Relatable', 'Educational', 'GRWM', 'Before & After', 'Storytime', 'Debates', 'Transitions', 'Trending Audio'].map((cat, i) => (
                 <Link
                   key={cat}
                   href="/formats"
@@ -292,8 +292,8 @@ export default function Home() {
                 { label: 'Audio Boost', value: '+42%', icon: Music },
                 { label: 'Shares', value: '4.5B/day', icon: TrendingUp },
                 { label: 'ROI Increase', value: '+29%', icon: BarChart3 }
-              ].map((stat) => (
-                <div style={{
+              ].map((stat, i) => (
+                <div key={i} style={{
                   padding: '2.5rem',
                   borderRadius: '1.5rem',
                   background: 'rgba(26, 26, 46, 0.8)',
